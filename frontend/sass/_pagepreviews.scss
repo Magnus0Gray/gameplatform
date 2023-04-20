@@ -1,0 +1,25 @@
+
+.libPreview {
+    grid-area: lib;
+
+    div {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+.favPreview {
+    grid-area: fav;
+    //width: 100%;
+}
+
+.storePreview {
+    grid-area: store;
+
+    div {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: flex-start;
+    }
+    // width: 60%;
+}

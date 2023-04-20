@@ -1,18 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;1,600&display=swap');
+@import "colours";
+@import "gamecard";
+@import "pagepreviews";
+
+$maxwidth: 85%;
+$rootsize: 14px;
+
 
 html, body {
     font-family: 'Archivo', sans-serif;
     font-weight: 300;
+    font-size: $rootsize;
+    color: $fontColor;
+    background-color: $backgroundColor;
+    max-height: 80%;
+    width: 100vw;
 }
 
 h1, h2, h3 {
     font-weight: 600;
 }
 
+h1{
+    font-size: $rootsize * 3;
+
+}
+
+h2 {
+    font-size: $rootsize * 2;
+    margin: 0;
+}
+
+h3 {
+    font-size: $rootsize * 1.5;
+}
+
+h4 {
+    font-size: $rootsize;
+    font-weight: 400;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: last baseline;
+
+    a {
+        max-width: 250px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $fontColor;
+    }
+}
+
+.pageButton, .pageButtonSelected {
+    padding: 0.5rem;
+}
+
+.pageButtonSelected {
+    color: $gameRed;
+}
+
+main {
+
+    //display: flex;
+}
+
 section {
-    margin: 2rem auto;
-    background: white;
+    margin: 1rem;
+    background: $gameSlate;
     padding: 1rem;
     border: 1px solid #ccc;
-    max-width: 25rem;
+    //max-width: auto;
+}
+
+
+.frontpage {
+    display: grid;
+    //flex-direction: column;
+    grid-gap: 0.5rem;
+    grid-template-areas:
+        "store fav" "lib lib";
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    height: auto;
+    justify-content: stretch;
+    align-content: stretch;
+    overflow: visible;
+}
+
+
+#container {
+    max-width: $maxwidth;
+    margin: 0 auto;
 }

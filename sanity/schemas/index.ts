@@ -1,4 +1,4 @@
 import categories from './category'
-import Subjects from './subject'
+import games from './game'
 
-export const schemaTypes = [categories, Subjects]
+export const schemaTypes = [categories, games]

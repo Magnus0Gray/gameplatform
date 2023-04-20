@@ -1,19 +1,106 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;1,600&display=swap");
+.game-card {
+  padding: 1rem;
+  max-width: 150px;
+  width: 150px;
+}
+
+.libPreview {
+  grid-area: lib;
+}
+.libPreview div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.favPreview {
+  grid-area: fav;
+}
+
+.storePreview {
+  grid-area: store;
+}
+.storePreview div {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+}
+
 html, body {
   font-family: "Archivo", sans-serif;
   font-weight: 300;
+  font-size: 14px;
+  color: #fff;
+  background-color: #000;
+  max-height: 80%;
+  width: 100vw;
 }
 
 h1, h2, h3 {
   font-weight: 600;
 }
 
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  font-size: 28px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: last baseline;
+}
+header a {
+  max-width: 250px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.pageButton, .pageButtonSelected {
+  padding: 0.5rem;
+}
+
+.pageButtonSelected {
+  color: #ff0000;
+}
+
 section {
-  margin: 2rem auto;
-  background: white;
+  margin: 1rem;
+  background: #444;
   padding: 1rem;
   border: 1px solid #ccc;
-  max-width: 25rem;
+}
+
+.frontpage {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-areas: "store fav" "lib lib";
+  grid-template-rows: 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  width: 100%;
+  height: auto;
+  justify-content: stretch;
+  align-content: stretch;
+  overflow: visible;
+}
+
+#container {
+  max-width: 85%;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=main.css.map */
