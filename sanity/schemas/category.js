@@ -14,7 +14,7 @@ export default {
 			title: 'URL-Tag',
 			options: {
 				source: 'title',
-				slugify: input => input.toLowerCase().replace(/[^\w-]+/g, '').replace(/\s+/g, '-').slice(0,10)
+				slugify: input => input.toLowerCase().replace(/[^\w-]+/g, '').replace(/\s+/g, '-').slice(0, 10)
 			}
 
 		},	]

@@ -1,5 +1,36 @@
-.game-card{
+@import "colours";
+
+.game-card {
     padding: 1rem;
-    max-width: 150px;
-    width: 150px;
+    margin: 0.5rem 1rem;
+    width: 130px;
+    height: 130px;
+    background: $gameSlate;
+    //border: 1px solid #ccc;
+    border-radius: 5px;
+    //border-radius: 1rem;
+    //box-shadow: 0 0 15px #000;
+    //border: 1px solid #ccc;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5) inset;
+    background-image: url("https://media.rawg.io/media/games/63e/63ee51f2fc8c78ff3a4fa8f60d5898b4.jpg");
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center;
+    color: $fontColor;
+    text-decoration: none;
+
+
+    span {
+        display: flex;
+
+        .favouriteIcon {
+            align-self: first baseline;
+            position: center;
+            right: 10px;
+            top: -10px;
+            width: 16px;
+            height: 16px;
+            padding: 0;
+        }
+    }
 }

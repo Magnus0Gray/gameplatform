@@ -1,25 +1,63 @@
 
 .libPreview {
     grid-area: lib;
+    display: flex;
+    flex-flow: wrap;
+    align-items: flex-start;
 
-    div {
-        display: flex;
-        justify-content: space-evenly;
+    h2 {
+        width: 100px;
     }
-}
 
-.favPreview {
-    grid-area: fav;
-    //width: 100%;
-}
-
-.storePreview {
-    grid-area: store;
 
     div {
         display: flex;
         flex-flow: wrap;
         justify-content: flex-start;
+        position:relative;
+
+        .favouriteIcon {
+            align-self: first baseline;
+            position: relative;
+            font-size: 0;
+            right: -155px;
+            top: 25px;
+            width: 16px;
+            height: 16px;
+            padding: 0px;
+            margin: -8px;
+        }
+    }
+}
+
+.favPreview {
+    grid-area: fav;
+    //max-width: 150px;
+    //min-width: 200px;
+    div {
+        display: flex;
+        flex-flow: wrap;
+        //justify-content: space-evenly;
+    }
+}
+
+.storePreview {
+    grid-area: store;
+    display: flex;
+    flex-flow: wrap;
+    align-items: flex-start;
+    //display: inline-block;
+    justify-content: space-between;
+
+    h2{
+        width: 100px;
+    }
+
+    div {
+        flex-grow: 2;
+        display: flex;
+        flex-flow: wrap;
+        //justify-content: space-evenly;
     }
     // width: 60%;
 }

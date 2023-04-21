@@ -1,6 +1,21 @@
 import GameCard from '../gameCard'
+import { fetchAllGames } from '../../sanity/services';
+import { useState, useEffect } from 'react';
 
-export default function Libpage({ games }) {
+export default function Libpage() {
+
+	const [games, setGames] = useState(null)
+	const getGames = async () => {
+		const data = await fetchAllGames()
+		//console.log(data)
+		setGames(data)
+	}
+
+	useEffect(() => {
+		getGames()
+	}, [])
+
+
 	return (
 			<section className="libPreview">
 				<h2>Library</h2>
