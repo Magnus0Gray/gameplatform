@@ -19,7 +19,9 @@ export default function Favpage() {
 	return (
 			<section className="pageview">
 				<h2>Favourites</h2>
-				{games?.map((g, i) => <GameCard key={i} gameinfo={g} >{g.game_title}</GameCard>)}
+				{games?.map((g, i) => g.favourite === true
+				? <GameCard key={i} updateParent={getGames} gameinfo={g} >{g.game_title}</GameCard>
+				: null)}
 			</section>
 	)
 }

@@ -17,9 +17,9 @@ export default function Libpage() {
 
 
 	return (
-			<section className="libPreview">
+			<section className="pageview">
 				<h2>Library</h2>
-				{games?.map((g, i) => <GameCard key={i} gameinfo={g} >{g.game_title}</GameCard>)}
+				{games?.map((g, i) => <GameCard key={i}isInLibrary={true} gameinfo={g} >{g.game_title}</GameCard>)}
 			</section>
 	)
 }
