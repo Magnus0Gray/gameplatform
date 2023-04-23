@@ -15,7 +15,7 @@ export default function Layout() {
 
             </main>
             <footer>
-                Data sourced using <a href="rawg.io/">rawg.io</a>
+                Data sourced using <a href="https://www.rawg.io/">rawg.io</a>
             </footer>
         </div>
     )
