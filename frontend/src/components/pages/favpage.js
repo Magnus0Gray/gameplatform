@@ -17,11 +17,14 @@ export default function Favpage() {
 
 
 	return (
-			<section className="pageview">
-				<h2>Favourites</h2>
+		<section className="pageview">
+			
+			<h2 className="pageTitle">Favourites</h2>
+			<div>
 				{games?.map((g, i) => g.favourite === true
-				? <GameCard key={i} updateParent={getGames} gameinfo={g} >{g.game_title}</GameCard>
-				: null)}
+				? <GameCard key={i} updateParent={getGames} gameinfo={g} />
+					: null)}
+			</div>
 			</section>
 	)
 }

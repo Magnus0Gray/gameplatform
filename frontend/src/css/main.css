@@ -1,30 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,400;1,600&display=swap");
 .game-card {
   padding: 1rem;
-  margin: 0.5rem 1rem;
-  width: 130px;
-  height: 130px;
+  margin: 0.5rem;
+  width: 150px;
+  height: 150px;
   background: #444;
   border-radius: 5px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
-  background-image: url("https://media.rawg.io/media/games/63e/63ee51f2fc8c78ff3a4fa8f60d5898b4.jpg");
+  background-image: url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg");
   background-blend-mode: soft-light;
   background-size: cover;
   background-position: center;
   color: #fff;
   text-decoration: none;
 }
-.game-card span {
-  display: flex;
-}
-.game-card span .favouriteIcon {
-  align-self: first baseline;
-  position: center;
-  right: 10px;
-  top: -10px;
-  width: 16px;
-  height: 16px;
-  padding: 0;
+.game-card h4 {
+  height: 60px;
+  overflow: hidden;
 }
 
 .libPreview {
@@ -32,9 +24,6 @@
   display: flex;
   flex-flow: wrap;
   align-items: flex-start;
-}
-.libPreview h2 {
-  width: 100px;
 }
 .libPreview div {
   display: flex;
@@ -44,10 +33,12 @@
   display: grid;
 }
 .libPreview div article .favouriteIcon {
+  grid-column: 1;
+  grid-row: 1;
   align-self: first baseline;
   position: relative;
   font-size: 0;
-  right: -155px;
+  right: -165px;
   top: 25px;
   width: 16px;
   height: 16px;
@@ -57,13 +48,21 @@
 
 .favPreview {
   grid-area: fav;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
 }
 .favPreview div {
   display: flex;
   flex-flow: wrap;
+  flex-direction: column;
 }
 .favPreview div article {
   display: grid;
+}
+.favPreview .sectionTitle {
+  width: auto;
+  margin: 1rem 0;
 }
 
 .storePreview {
@@ -73,8 +72,9 @@
   align-items: flex-start;
   justify-content: space-between;
 }
-.storePreview h2 {
-  width: 100px;
+.storePreview .game-card {
+  grid-column: 1;
+  grid-row: 1;
 }
 .storePreview div {
   flex-grow: 2;
@@ -99,22 +99,30 @@ h1, h2, h3 {
 
 h1 {
   font-size: 42px;
+  font-weight: 500;
 }
 
 h2 {
   font-size: 28px;
+  font-weight: 300;
   margin: 1rem 1rem 1rem 0;
 }
 
 h3 {
   font-size: 21px;
-  margin: 1rem 0 0 0;
+  margin: 0;
+  word-wrap: break-word;
+  font-weight: 500;
+  hyphens: auto;
 }
 
 h4 {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
   margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 2px 2px 5px #000000;
 }
 
 header {
@@ -127,6 +135,12 @@ header a {
   text-decoration: none;
   text-transform: uppercase;
   color: #fff;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
 }
 
 footer {
@@ -156,19 +170,31 @@ section {
 }
 
 .frontpage {
+  height: 100%;
+  width: 100%;
   display: grid;
   grid-gap: 0.5rem;
   grid-template-areas: "store fav" "lib fav";
-  grid-template-rows: 1fr auto;
-  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;
   /* justify-content: stretch;
-   align-content: stretch;
-   overflow: visible;*/
+  align-content: stretch;
+  overflow: visible;*/
 }
 
 .gameview {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  background: #444;
+  border-radius: 100px;
+  background-image: url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg");
+  background-blend-mode: soft-light;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 100px rgb(0, 0, 0) inset, 0 0 100px rgb(0, 0, 0) inset, 0 0 100px rgb(0, 0, 0) inset, 0 0 100px rgb(0, 0, 0) inset;
+  padding: 8rem;
+  margin: 5rem;
 }
 .gameview span {
   display: flex;
@@ -186,20 +212,27 @@ section {
   cursor: pointer;
 }
 
-.pageview {
+.pageview div {
   display: flex;
   flex-flow: wrap;
-  justify-content: flex-start;
-  position: relative;
+  align-items: flex-start;
+  flex-grow: 1;
+  justify-content: safe center;
 }
-.pageview article {
+.pageview div article {
   display: grid;
 }
-.pageview article .favouriteIcon {
+.pageview div article .game-card {
+  grid-column: 1;
+  grid-row: 1;
+}
+.pageview div article .favouriteIcon {
+  grid-column: 1;
+  grid-row: 1;
   align-self: first baseline;
   position: relative;
   font-size: 0;
-  right: -155px;
+  right: -165px;
   top: 25px;
   width: 16px;
   height: 16px;
@@ -207,13 +240,34 @@ section {
   margin: -8px;
 }
 
-.sectionTitle {
-  font-weight: 600;
+.sectionTitle, .pageTitle {
+  font-weight: 500;
   font-size: 28px;
   margin: 1rem 1rem 1rem 0;
   text-decoration: none;
   color: #fff;
+}
+
+.sectionTitle {
   width: 80px;
+}
+
+.buyButton {
+  grid-column: 1;
+  grid-row: 1;
+  text-decoration: none;
+  position: relative;
+  bottom: -150px;
+  left: 30px;
+  color: #fff;
+  padding: 0.4rem 0;
+  width: 50px;
+  height: 1rem;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: 400;
+  box-shadow: 0 0 3px rgba(200, 200, 200, 0.4);
+  background-color: rgba(10, 10, 10, 0.6);
 }
 
 #container {

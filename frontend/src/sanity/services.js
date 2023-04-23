@@ -22,7 +22,7 @@ export const fetchGame = async (slug) => {
 	return data
 }
 
-export async function setFavRemote(id, state) {
+export async function patchFavRemote(id, state) {
 	console.log(".....")
 	console.log(state)
 	console.log("^^^^")

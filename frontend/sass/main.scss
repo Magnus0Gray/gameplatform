@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,400;1,600&display=swap');
+
 @import "colours";
 @import "gamecard";
 @import "pagepreviews";
@@ -22,23 +23,32 @@ h1, h2, h3 {
 
 h1{
     font-size: $rootsize * 3;
+    font-weight: 500;
 
 }
 
 h2 {
     font-size: $rootsize * 2;
+    font-weight: 300;
     margin: 1rem 1rem 1rem 0;
 }
 
 h3 {
     font-size: $rootsize * 1.5;
-    margin: 1rem 0 0 0;
+    margin: 0;
+    word-wrap: break-word;
+    font-weight: 500;
+    //text-shadow: 2px 2px 5px #000000;
+    hyphens: auto; //doesn't work in most browsers
 }
 
 h4 {
     font-size: $rootsize;
-    font-weight: 400;
+    font-weight: 300;
     margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 2px 2px 5px #000000;
 }
 
 header {
@@ -53,7 +63,11 @@ header {
         color: $fontColor;
     }
 }
-
+main {
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+}
 footer {
     text-align: center;
     width: 100%;
@@ -74,9 +88,7 @@ footer {
     color: $gameRed;
 }
 
-main {
-    //display: flex;
-}
+
 
 section {
     margin: 1rem;
@@ -89,14 +101,17 @@ section {
 
 
 .frontpage {
+    height: 100%;
+    width: 100%;
     display: grid;
+    //justify-items: end;
     //flex-direction: column;
     grid-gap: 0.5rem;
     grid-template-areas:
         "store fav" "lib fav";
-    grid-template-rows: 1fr auto;
-    grid-template-columns: 3fr 1fr;
-   /* justify-content: stretch;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+    /* justify-content: stretch;
     align-content: stretch;
     overflow: visible;*/
 }
@@ -104,6 +119,16 @@ section {
 .gameview {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    background: $gameSlate;
+    border-radius: 100px;
+    background-image: url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg");
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 100px rgba(0,0,0,1) inset, 0 0 100px rgba(0,0,0,1) inset, 0 0 100px rgba(0,0,0,1) inset, 0 0 100px rgba(0,0,0,1) inset;
+    padding: 8rem;
+    margin: 5rem;
 
     span {
         display: flex;
@@ -124,46 +149,75 @@ section {
 }
 
 .pageview {
-    //display: flex;
-    // flex-flow: wrap;
-    // align-items: flex-start;
-    display: flex;
-    flex-flow: wrap;
 
-    justify-content: flex-start;
-    position: relative;
-    
-    article {
-        display: grid;
-    
-        .favouriteIcon {
-            align-self: first baseline;
-            position: relative;
-            font-size: 0;
-            right: -155px;
-            top: 25px;
-            width: 16px;
-            height: 16px;
-            padding: 0px;
-            margin: -8px;
+
+    div {
+        display: flex;
+        flex-flow: wrap;
+        align-items: flex-start;
+        flex-grow: 1;
+        justify-content: safe center;
+
+        article {
+            display: grid;
+
+            .game-card {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .favouriteIcon {
+                grid-column: 1;
+                grid-row: 1;
+                align-self: first baseline;
+                position: relative;
+                font-size: 0;
+                right: -165px;
+                top: 25px;
+                width: 16px;
+                height: 16px;
+                padding: 0px;
+                margin: -8px;
+            }
         }
     }
-    
 }
 
-    .sectionTitle {
-        font-weight: 600;
-        font-size: $rootsize * 2;
-        margin: 1rem 1rem 1rem 0;
-        text-decoration: none;
-        color: $fontColor;
-        width: 80px;
-    }
 
-    #container {
-        display: flex;
-        flex-flow: column;
-        max-width: $maxwidth;
-        margin: 0 auto;
-        min-height: 100vh;
-    }
+.sectionTitle, .pageTitle {
+    font-weight: 500;
+    font-size: $rootsize * 2;
+    margin: 1rem 1rem 1rem 0;
+    text-decoration: none;
+    color: $fontColor;
+}
+
+.sectionTitle {
+    width: 80px;
+}
+
+.buyButton {
+    grid-column: 1;
+    grid-row: 1;
+    text-decoration: none;
+    position: relative;
+    bottom: -150px;
+    left: 30px;
+    color: $fontColor;
+    padding: 0.4rem 0;
+    width: 50px;
+    height: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 400;
+    box-shadow: 0 0 3px rgba(200,200,200,0.4);
+    background-color: rgba(10,10,10,0.6);
+}
+
+#container {
+    display: flex;
+    flex-flow: column;
+    max-width: $maxwidth;
+    margin: 0 auto;
+    min-height: 100vh;
+}

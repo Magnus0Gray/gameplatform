@@ -5,10 +5,6 @@
     flex-flow: wrap;
     align-items: flex-start;
 
-    h2 {
-        width: 100px;
-    }
-
 
     div {
         display: flex;
@@ -17,11 +13,14 @@
         article {
             display: grid;
 
+
             .favouriteIcon {
+                grid-column: 1;
+                grid-row: 1;
                 align-self: first baseline;
                 position: relative;
                 font-size: 0;
-                right: -155px;
+                right: -165px;
                 top: 25px;
                 width: 16px;
                 height: 16px;
@@ -34,16 +33,27 @@
 
 .favPreview {
     grid-area: fav;
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
     //max-width: 150px;
     //min-width: 200px;
     div {
         display: flex;
         flex-flow: wrap;
+        flex-direction: column;
+        //justify-content: end;
         //justify-content: space-evenly;
 
         article {
             display: grid;
         }
+    }
+
+    .sectionTitle {
+        width: auto;
+        margin: 1rem 0;
     }
 }
 
@@ -55,8 +65,9 @@
     //display: inline-block;
     justify-content: space-between;
 
-    h2 {
-        width: 100px;
+    .game-card {
+        grid-column: 1;
+        grid-row: 1;
     }
 
     div {

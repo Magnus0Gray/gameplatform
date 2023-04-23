@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { setFavRemote } from "../sanity/services";
+import { patchFavRemote } from "../sanity/services";
 
 export default function FavButton({ favstate, game, updateParent }) {
 
@@ -14,7 +14,7 @@ export default function FavButton({ favstate, game, updateParent }) {
 	const updateRemote = async () => {
 		console.log(game._id)
 
-		const result = await setFavRemote(game._id, currentFavstate)
+		const result = await patchFavRemote(game._id, currentFavstate)
 		console.log(result)
 		updateParent(); //refaktorere slik at jeg alltid henter og oppdaterer objektet direkte i stedet for kopier, så manuelt oppdatere andre kopier?
 	}
@@ -25,12 +25,12 @@ export default function FavButton({ favstate, game, updateParent }) {
 
 		//console.log(currentFavstate)
 		if (didMount.current) {
-			console.log("escape");
+			//console.log("escape");
 			didMount.current = false
 			return
 
 		}
-		console.log("run");
+		//console.log("run");
 		updateRemote()
 	}, [currentFavstate, favstate])
 
