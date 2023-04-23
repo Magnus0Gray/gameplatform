@@ -8,7 +8,7 @@ export const fetchAllCategories = async () => {
 
 export const fetchAllGames = async () => {
 	const data = await client.fetch(`*[_type == "games"]		
-		{_id, game_title, "cat_title":category->title, slug, favourite }`)
+		{_id, "apikey":API_ID, game_title, "cat_title":category->title, slug, favourite }`)
 	//console.log(data)
 
 	return data

@@ -27,7 +27,7 @@ export default function Gamepage({ store }) {
 
 	return (
 		<article className="gameview">
-			<span><h2>{game?.game_title}</h2>{game ? <FavButton updateParent={getGame} favstate={game?.favourite} game={game} /> : null}</span>
+			<span><h2>{game?.game_title}</h2>{game ? <FavButton updateParent={getGame} favstate={game?.favourite} game={game} /> : null}</span> 
 			<span className="gameinfo">Genre: {game?.cat_title}</span>
 			<span className="gameinfo">Hours Played: {game?.hoursplayed}</span>
 

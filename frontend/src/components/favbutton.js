@@ -16,7 +16,7 @@ export default function FavButton({ favstate, game, updateParent }) {
 
 		const result = await setFavRemote(game._id, currentFavstate)
 		console.log(result)
-		updateParent();
+		updateParent(); //refaktorere slik at jeg alltid henter og oppdaterer objektet direkte i stedet for kopier, så manuelt oppdatere andre kopier?
 	}
 
 	useEffect(() => {

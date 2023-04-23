@@ -1,7 +1,7 @@
 import GameCard from '../gameCard'
 import { fetchAllGames } from '../../sanity/services';
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Frontpage() {
 
@@ -20,17 +20,17 @@ export default function Frontpage() {
 	return (
 		<div className="frontpage">
 			<section className="storePreview">
-			<NavLink className="sectionTitle" to="store">
+			<Link className="sectionTitle" to="store">
                 Store
-            </NavLink>
+            </Link>
 				<div>
 					{games?.map((g, i) => <GameCard updateParent={getGames} key={i} gameinfo={g} >{g.game_title}</GameCard>)}
 				</div>
 			</section>
 			<section className="favPreview">
-				<NavLink className="sectionTitle" to="fav">
+				<Link className="sectionTitle" to="fav">
 					Favourites
-				</NavLink>
+				</Link>
 				<div>
 					{games?.map((g, i) => g.favourite === true
 						? <GameCard key={i} updateParent={getGames} gameinfo={g} >{g.game_title}</GameCard>
@@ -38,9 +38,9 @@ export default function Frontpage() {
 				</div>
 			</section>
 			<section className="libPreview">
-				<NavLink className="sectionTitle" to="lib">
+				<Link className="sectionTitle" to="lib">
 					Library
-				</NavLink>
+				</Link>
 				<div>
 					{games?.map((g, i) => <GameCard updateParent={getGames} isInLibrary={true} key={i} gameinfo={g} >{g.game_title}</GameCard>)}
 				</div>
