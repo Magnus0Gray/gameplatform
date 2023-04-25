@@ -220,7 +220,11 @@ section {
     margin: 1rem 3rem;
     align-self: center;
     cursor: pointer;
- 
+
+    img {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 .pageview {

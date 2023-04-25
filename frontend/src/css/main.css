@@ -312,6 +312,10 @@ section {
   align-self: center;
   cursor: pointer;
 }
+.favouriteIcon img {
+  width: 32px;
+  height: 32px;
+}
 
 .pageview div {
   display: flex;
