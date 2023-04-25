@@ -1,39 +1,57 @@
 
-.libPreview {
-    grid-area: lib;
+.libPreview, .storePreview {
+
     display: flex;
     flex-flow: wrap;
     align-items: flex-start;
-    flex-basis: 700px;
+    //display: inline-block;
+    justify-content: space-between;
+    max-width: 900px;
 
-    .sectionTitle {
-        text-align: center;
+    .game-card {
+        grid-column: 1;
+        grid-row: 1;
     }
 
     div {
+        flex-grow: 2;
         display: flex;
         flex-flow: wrap;
-        flex-basis: 600px;
+        flex-basis: 700px;
+        //justify-content: space-evenly;
 
         article {
             display: grid;
-
-
-            .favouriteIcon {
-                grid-column: 1;
-                grid-row: 1;
-                align-self: first baseline;
-                position: relative;
-                font-size: 0;
-                right: -165px;
-                top: 25px;
-                width: 16px;
-                height: 16px;
-                padding: 0px;
-                margin: -8px;
-            }
         }
     }
+}
+
+.libPreview {
+    grid-area: lib;
+
+    .favouriteIcon {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: first baseline;
+        position: relative;
+        font-size: 0;
+        right: -180px;
+        top: 23px;
+        width: 16px;
+        height: 16px;
+        padding: 0px;
+        margin: -8px;
+
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+.storePreview {
+    grid-area: store;
 }
 
 .favPreview {
@@ -62,30 +80,3 @@
     }
 }
 
-.storePreview {
-    grid-area: store;
-    display: flex;
-    flex-flow: wrap;
-    align-items: flex-start;
-    //display: inline-block;
-    justify-content: space-between;
-    flex-basis: 700px;
-
-    .game-card {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    div {
-        flex-grow: 2;
-        display: flex;
-        flex-flow: wrap;
-        flex-basis: 600px;
-        //justify-content: space-evenly;
-
-        article {
-            display: grid;
-        }
-    }
-    // width: 60%;
-}

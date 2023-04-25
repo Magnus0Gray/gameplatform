@@ -17,18 +17,19 @@ export default function GameCard({ gameinfo, isInLibrary, updateParent }) {
 		getGameRawg();
 	}, [gameinfo])
 
+	//favbutton placed on bottom despite visually being placed on top, to facilitate better tab navigation order
 	return (
 		<article>
-		{ isInLibrary === true
-				? <FavButton updateParent={updateParent} game={gameinfo} favstate={gameinfo?.favourite} />
-			: null}
-			<Link className="game-card" style={{backgroundImage: `url(${gameRawg?.background_image})`}} to={'/games/' + gameinfo?.slug.current}>
+			<Link className="game-card" style={{backgroundImage: `url(${gameRawg?.background_image})`}} alt="Background image of gamecard" to={'/games/' + gameinfo?.slug.current}>
 			<h3>{gameinfo?.game_title}</h3>
 
 			<h4>{gameinfo?.cat_title}</h4>
 
 			
 			</Link>
+			{isInLibrary === true
+				? <FavButton updateParent={updateParent} game={gameinfo} favstate={gameinfo?.favourite} />
+				: null}
 		</article>
 	
 	)

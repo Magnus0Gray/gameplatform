@@ -37,8 +37,8 @@ export default function FavButton({ favstate, game, updateParent }) {
 	return (
 		<>
 			{currentFavstate === true
-				? <img onClick={toggleFav} role="button" className="favouriteIcon" src="/images/favouriteicon_true.webp" alt="game is a favourite" />
-				: <img onClick={toggleFav} role="button" className="favouriteIcon" src="/images/favouriteicon_false.webp" alt="game is not a favourite" />
+				? <button className="favouriteIcon" onClick={toggleFav} style={{ backgroundColor: "rgba(0,0,0,0)", border: "none" }}><img src="/images/favouriteicon_true.webp" alt="game is a favourite" /></button>
+				: <button className="favouriteIcon" onClick={toggleFav} style={{ backgroundColor: "rgba(0,0,0,0)", border: "none" }}><img src="/images/favouriteicon_false.webp" alt="game is not favourite" /></button>
 			}
 		</>
 	)

@@ -96,7 +96,7 @@ export default function Gamepage() {
 	//gameRawg?.tags.map((t, i) => t.name + (i !== (gameRawg?.tags.length - 1), ", "))
 	//	< article style = {{ backgroundImage: gameRawg?.background_image != null ? `url(${gameRawg?.background_image})` : `url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg")` }} className = "gameview" >
 	return (
-		<article style={{ backgroundImage: getBackgroundIMG() }} className="gameview">
+		<article style={{ backgroundImage: getBackgroundIMG() }} alt="article with a background image"className="gameview">
 			<div>
 				<span><h2>{gameRawg?.name}</h2>{gameRawg == undefined || isOwned ? null : <BuyButton game={gameRawg} />}{game ? <FavButton updateParent={getGame} favstate={game?.favourite} game={game} /> : null}</span>
 				

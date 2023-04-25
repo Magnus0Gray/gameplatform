@@ -2,8 +2,8 @@
 .game-card {
   padding: 1rem;
   margin: 0.5rem;
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   background: #444;
   border-radius: 5px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
@@ -14,42 +14,83 @@
   color: #fff;
   text-decoration: none;
 }
+.game-card h3 {
+  background-color: rgba(0, 0, 0, 0.3);
+  /*       
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 0.2rem 0.5rem;
+  min-width: 83px;
+  */
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-weight: 500;
+  width: fit-content;
+  text-shadow: 0 0 8px #000, 0 0 8px #000, 0 0 8px #000, 0 0 8px #000;
+}
 .game-card h4 {
-  height: 60px;
-  overflow: hidden;
   margin: 0.5rem 1rem;
+  /*border-bottom-left-radius: 10px;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+
+  margin-top: 0;
+  margin-left: 0;
+  border-bottom-right-radius: 10px;*/
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  max-height: 60px;
+  width: fit-content;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 8px #000, 0 0 8px #000, 0 0 8px #000, 0 0 8px #000;
+}
+
+.libPreview, .storePreview {
+  display: flex;
+  flex-flow: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 900px;
+}
+.libPreview .game-card, .storePreview .game-card {
+  grid-column: 1;
+  grid-row: 1;
+}
+.libPreview div, .storePreview div {
+  flex-grow: 2;
+  display: flex;
+  flex-flow: wrap;
+  flex-basis: 700px;
+}
+.libPreview div article, .storePreview div article {
+  display: grid;
 }
 
 .libPreview {
   grid-area: lib;
-  display: flex;
-  flex-flow: wrap;
-  align-items: flex-start;
-  flex-basis: 700px;
 }
-.libPreview .sectionTitle {
-  text-align: center;
-}
-.libPreview div {
-  display: flex;
-  flex-flow: wrap;
-  flex-basis: 600px;
-}
-.libPreview div article {
-  display: grid;
-}
-.libPreview div article .favouriteIcon {
+.libPreview .favouriteIcon {
   grid-column: 1;
   grid-row: 1;
   align-self: first baseline;
   position: relative;
   font-size: 0;
-  right: -165px;
-  top: 25px;
+  right: -180px;
+  top: 23px;
   width: 16px;
   height: 16px;
   padding: 0px;
   margin: -8px;
+}
+.libPreview .favouriteIcon img {
+  width: 16px;
+  height: 16px;
+}
+
+.storePreview {
+  grid-area: store;
 }
 
 .favPreview {
@@ -71,38 +112,12 @@
   margin: 1rem 0;
 }
 
-.storePreview {
-  grid-area: store;
-  display: flex;
-  flex-flow: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-basis: 700px;
-}
-.storePreview .game-card {
-  grid-column: 1;
-  grid-row: 1;
-}
-.storePreview div {
-  flex-grow: 2;
-  display: flex;
-  flex-flow: wrap;
-  flex-basis: 600px;
-}
-.storePreview div article {
-  display: grid;
-}
-
 html, body {
   font-family: "Archivo", sans-serif;
   font-weight: 300;
   font-size: 14px;
   color: #fff;
   background-color: #000;
-}
-
-h1, h2, h3 {
-  font-weight: 600;
 }
 
 h1 {
@@ -120,13 +135,13 @@ h3 {
   font-size: 21px;
   margin: 0;
   word-wrap: break-word;
-  font-weight: 500;
   hyphens: auto;
 }
 
 h4 {
   font-size: 14px;
   font-weight: 300;
+  width: auto;
   margin: 1rem;
   display: flex;
   flex-direction: column;
@@ -256,6 +271,10 @@ section {
   height: 16px;
   padding: 0px;
   margin: -8px;
+}
+.pageview div article .favouriteIcon img {
+  width: 16px;
+  height: 16px;
 }
 
 .sectionTitle, .pageTitle {
