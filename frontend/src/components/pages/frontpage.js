@@ -73,7 +73,7 @@ export default function Frontpage() {
 				</div>
 			</section>
 			<section className="libPreview">
-				<Link className="sectionTitle" to="lib">
+				<Link className="sectionTitle" style={{ textAlign: "center"}} to="lib">
 					Library ({getLibLength()})
 				</Link>
 				<div>

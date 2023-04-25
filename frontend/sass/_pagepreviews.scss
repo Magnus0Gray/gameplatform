@@ -1,6 +1,5 @@
 
 .libPreview, .storePreview {
-
     display: flex;
     flex-flow: wrap;
     align-items: flex-start;
@@ -18,7 +17,7 @@
         display: flex;
         flex-flow: wrap;
         flex-basis: 700px;
-        //justify-content: space-evenly;
+
 
         article {
             display: grid;
@@ -28,6 +27,15 @@
 
 .libPreview {
     grid-area: lib;
+
+    div {
+        justify-content: center;
+
+        @media only screen and (min-width: 900px) {
+            justify-content: normal;
+        }
+    }
+
 
     .favouriteIcon {
         grid-column: 1;
@@ -79,4 +87,5 @@
         margin: 1rem 0;
     }
 }
+
 

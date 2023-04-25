@@ -6,6 +6,7 @@ import BuyButton from '../buybutton';
 
 export default function Gamepage() {
 
+	var screenshotRotation = 0;
 	const params = useParams();
 	//console.log(params.slug);
 
@@ -13,7 +14,9 @@ export default function Gamepage() {
 
 	const [game, setGame] = useState(null)
 	const [gameRawg, setGameRawg] = useState(null)
+	const [screenshots, setScreenshots] = useState([])
 	const [isOwned, setIsOwned] = useState(false)
+
 	const getGame = async () => {
 		const data = await fetchGame(params.slug)
 		console.log(data[0])
@@ -24,10 +27,9 @@ export default function Gamepage() {
 		}
 		else
 			getGameRawg()
-			
+
 
 	}
-
 
 	const getGameRawg = async () => {
 		var rawgResponse;
@@ -36,8 +38,15 @@ export default function Gamepage() {
 		else
 			rawgResponse = await fetch(`https://api.rawg.io/api/games/${game.apikey}?key=c83b6040e57a43e1817e831ba00f9cd1`)
 		const rawgData = await rawgResponse.json()
-		setGameRawg(rawgData);
-		console.log(rawgData);
+		setGameRawg(rawgData, getScreenshots(rawgData));
+
+	}
+
+	const getScreenshots = async (data) => {
+		const ssResponse = await fetch(`https://api.rawg.io/api/games/${data.id}/screenshots?key=c83b6040e57a43e1817e831ba00f9cd1`)
+		const ssData = await ssResponse.json()
+		setScreenshots(ssData);
+		console.log(ssData);
 	}
 
 
@@ -55,7 +64,7 @@ export default function Gamepage() {
 
 	}, [isOwned])
 
-	function getBackgroundIMG(){
+	function getBackgroundIMG() {
 		if (gameRawg?.background_image_additional != null)
 			return `url(${gameRawg?.background_image_additional})`
 		else if (gameRawg?.background_image != null)
@@ -78,7 +87,7 @@ export default function Gamepage() {
 		for (let i = 0; i < listLength; i++) {
 			if (!isPlatform && !isStore)
 				outputList[i] = listArray[i].name + ", "
-			else if(!isStore)
+			else if (!isStore)
 				outputList[i] = listArray[i].platform.name + ", "
 			else
 				outputList[i] = listArray[i].store.name + ", "
@@ -93,11 +102,21 @@ export default function Gamepage() {
 		//return `${tagList.slice(0,-1)}`
 		return outputList;
 	}
+
+	function rotateScreenshot() {
+		if(screenshotRotation == 0)
+			return screenshotRotation = -2;
+		if (screenshotRotation == -2)
+			return screenshotRotation = 10;
+		if (screenshotRotation == 10)
+			return screenshotRotation = -10;
+	}
+
 	//gameRawg?.tags.map((t, i) => t.name + (i !== (gameRawg?.tags.length - 1), ", "))
 	//	< article style = {{ backgroundImage: gameRawg?.background_image != null ? `url(${gameRawg?.background_image})` : `url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg")` }} className = "gameview" >
 	return (
-		<article style={{ backgroundImage: getBackgroundIMG() }} alt="article with a background image"className="gameview">
-			<div>
+		<article style={{ backgroundImage: getBackgroundIMG() }} alt="article with a background image" className="gameview">
+			<div className="infoWrapper">
 				<span><h2>{gameRawg?.name}</h2>{gameRawg == undefined || isOwned ? null : <BuyButton game={gameRawg} />}{game ? <FavButton updateParent={getGame} favstate={game?.favourite} game={game} /> : null}</span>
 				
 				{game ? <span className="gameinfo">Hours Played: {game?.hoursplayed}</span> : null}
@@ -114,16 +133,14 @@ export default function Gamepage() {
 						<span className="gameinfo"> Available through: {makeList(gameRawg?.stores, false, true)}</span>
 						<span className="gameinfo">Tags: {makeList(gameRawg?.tags)} </span>
 					</>}
-
-				
-				<h3>Description:</h3>
-				<span className="gameinfo_desc" dangerouslySetInnerHTML={{ __html: gameRawg?.description }} />
-
-
 				
 			</div>
-			<div>
-				images...
+			<div className="screenshotWrapper">
+				{screenshots?.results?.filter((r, i) => i < 3).reverse().map((s, i) => <img style={{ transform: `rotate(${rotateScreenshot()}deg)`}}className="screenshot" key={i} src={s.image} />)}
+			</div>
+			<div className="descriptionWrapper">
+				<h3>Description:</h3>
+				<span className="gameinfo_desc" dangerouslySetInnerHTML={{ __html: gameRawg?.description }} />
 			</div>
 
 		</article>
