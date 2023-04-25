@@ -8,7 +8,7 @@ export default function GameCard_Store({ gameinfo }) {
 				<h3 lang="en">{gameinfo?.name}</h3>
 				<h4>{gameinfo?.genres.map((g, i) => <span key={i}>{g.name}</span>)}</h4>
 			</Link>
-			<BuyButton game={gameinfo} />
+			<BuyButton card={true} game={gameinfo} />
 		</article>
 	)
 }

@@ -10,12 +10,12 @@ export default function GameCard({ gameinfo, isInLibrary, updateParent }) {
 		const rawgResponse = await fetch(`https://api.rawg.io/api/games/${gameinfo.apikey}?key=c83b6040e57a43e1817e831ba00f9cd1`)
 		const rawgData = await rawgResponse.json()
 		setGameRawgInfo(rawgData);
-		console.log(rawgData);
+		//console.log(rawgData);
 	}
 
 	useEffect(() => {
 		getGameRawg();
-	}, [])
+	}, [gameinfo])
 
 	return (
 		<article>

@@ -34,7 +34,7 @@ export default {
 			name: "owned",
 			title: "Owned",
 			type: "boolean",
-			initialValue: false
+			initialValue: true
 		},
 		{
 			name: "API_ID",

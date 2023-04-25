@@ -4,11 +4,16 @@
     display: flex;
     flex-flow: wrap;
     align-items: flex-start;
+    flex-basis: 700px;
 
+    .sectionTitle {
+        text-align: center;
+    }
 
     div {
         display: flex;
         flex-flow: wrap;
+        flex-basis: 600px;
 
         article {
             display: grid;
@@ -64,6 +69,7 @@
     align-items: flex-start;
     //display: inline-block;
     justify-content: space-between;
+    flex-basis: 700px;
 
     .game-card {
         grid-column: 1;
@@ -74,6 +80,7 @@
         flex-grow: 2;
         display: flex;
         flex-flow: wrap;
+        flex-basis: 600px;
         //justify-content: space-evenly;
 
         article {

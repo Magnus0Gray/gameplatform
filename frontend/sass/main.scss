@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,400;1,600&display=swap');
 
 @import "colours";
+@import "effects";
 @import "gamecard";
 @import "pagepreviews";
 
-$maxwidth: 85%;
+$maxwidth: 1400px;
 $rootsize: 14px;
 
 
@@ -37,6 +38,7 @@ h3 {
     font-size: $rootsize * 1.5;
     margin: 0;
     word-wrap: break-word;
+
     font-weight: 500;
     //text-shadow: 2px 2px 5px #000000;
     hyphens: auto; //doesn't work in most browsers
@@ -81,11 +83,16 @@ footer {
 }
 
 .pageButton, .pageButtonSelected {
-    padding: 0.5rem;
+    padding: 1px 0.5rem;
 }
 
 .pageButtonSelected {
-    color: $gameRed;
+    color: #000000;
+    font-weight: 600;
+   // text-shadow: 0 0 2px #ffffff;
+    background-color: #ffffff;
+    border-radius: 6px;
+    //box-shadow: 0 0 10px rgba(0,0,0,1) inset,0 0 10px rgba(0,0,0,1) inset,0 0 10px rgba(0,0,0,1) inset,0 0 15px rgba(0,0,0,1) inset;
 }
 
 
@@ -118,9 +125,7 @@ section {
 
 .gameview {
     display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    background: $gameSlate;
+    background: #252525;
     border-radius: 100px;
     background-image: url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg");
     background-blend-mode: soft-light;
@@ -129,14 +134,22 @@ section {
     box-shadow: 0 0 100px rgba(0,0,0,1) inset, 0 0 100px rgba(0,0,0,1) inset, 0 0 100px rgba(0,0,0,1) inset, 0 0 100px rgba(0,0,0,1) inset;
     padding: 8rem;
     margin: 5rem;
-
+    h3{
+        font-weight: 300;
+    }
     span {
         display: flex;
     }
 }
 
-.gameinfo{
+.gameinfo, .gameinfo_desc {
     margin: 1rem;
+    text-shadow: $denseTextShadow;
+}
+
+.gameinfo_desc {
+    display: flex;
+    flex-flow: column;
 }
 
 .favouriteIcon {
@@ -189,6 +202,7 @@ section {
     font-size: $rootsize * 2;
     margin: 1rem 1rem 1rem 0;
     text-decoration: none;
+
     color: $fontColor;
 }
 
@@ -196,22 +210,32 @@ section {
     width: 80px;
 }
 
-.buyButton {
-    grid-column: 1;
-    grid-row: 1;
+.buyButton, .buyButton_card {
     text-decoration: none;
-    position: relative;
-    bottom: -150px;
-    left: 30px;
     color: $fontColor;
-    padding: 0.4rem 0;
-    width: 50px;
+    padding: 0.4rem;
     height: 1rem;
+    align-self: center;
     text-align: center;
     border-radius: 5px;
     font-weight: 400;
     box-shadow: 0 0 3px rgba(200,200,200,0.4);
     background-color: rgba(10,10,10,0.6);
+
+}
+.buyButton_card {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: normal;
+    position: relative;
+    bottom: -150px;
+    left: 120px;
+    padding: 0.4rem 0;
+    width: 50px;
+}
+
+article {
+
 }
 
 #container {
@@ -219,5 +243,6 @@ section {
     flex-flow: column;
     max-width: $maxwidth;
     margin: 0 auto;
+    padding: 0 5rem;
     min-height: 100vh;
 }

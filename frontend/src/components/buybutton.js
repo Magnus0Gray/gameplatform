@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function BuyButton({ game }) {
+export default function BuyButton({ game, card }) {
 
 	const [storeURL, setStoreURL] = useState()
 
@@ -17,6 +17,6 @@ export default function BuyButton({ game }) {
 	}, [storeURL])
 	//console.log(game)
 	return (
-		<a href={storeURL} className="buyButton">BUY</a>
+		<a href={storeURL} className={(card ? "buyButton_card" : "buyButton")}>BUY</a>
 	)
 }

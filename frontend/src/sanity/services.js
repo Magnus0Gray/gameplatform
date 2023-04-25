@@ -17,7 +17,7 @@ export const fetchAllGames = async () => {
 export const fetchGame = async (slug) => {
 	//-> går inn i _ref
 	const data = await client.fetch(`*[_type == "games" && slug.current == $slug]
-		{_id, game_title, "cat_title":category->title, owned, favourite, hoursplayed }`,
+		{_id, "apikey":API_ID, game_title, "cat_title":category->title, owned, favourite, hoursplayed }`,
 		{ slug })
 	return data
 }
