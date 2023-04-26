@@ -6,15 +6,17 @@
   height: 160px;
   background: #444;
   border-radius: 5px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8) inset;
   background-image: url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg");
   background-blend-mode: soft-light;
   background-size: cover;
   background-position: center;
   color: #fff;
   text-decoration: none;
+  grid-column: 1;
+  grid-row: 1;
 }
-.game-card h3 {
+.game-card h2 {
   background-color: rgba(0, 0, 0, 0.3);
   /*       
   border-bottom-right-radius: 10px;
@@ -29,7 +31,7 @@
   width: fit-content;
   text-shadow: 0 0 8px #000, 0 0 8px #000, 0 0 8px #000, 0 0 8px #000;
 }
-.game-card h4 {
+.game-card h3 {
   margin: 0.5rem 1rem;
   /*border-bottom-left-radius: 10px;
   padding: 0.5rem 1rem;
@@ -47,16 +49,57 @@
   text-shadow: 0 0 8px #000, 0 0 8px #000, 0 0 8px #000, 0 0 8px #000;
 }
 
+.favouriteIcon {
+  width: 64px;
+  height: 64px;
+  margin: 1rem 3rem;
+  align-self: center;
+  cursor: pointer;
+}
+.favouriteIcon img {
+  width: 64px;
+  height: 64px;
+}
+
+.buyButton, .buyButton_card {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.4rem;
+  height: 1rem;
+  align-self: center;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: 400;
+  box-shadow: 0 0 3px rgba(200, 200, 200, 0.4);
+  background-color: rgba(10, 10, 10, 0.6);
+}
+
+.buyButton_card {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: normal;
+  position: relative;
+  bottom: -150px;
+  left: 120px;
+  padding: 0.4rem 0;
+  width: 50px;
+}
+.buyButton_card:after {
+  display: block;
+  content: "";
+  width: 60px;
+  height: 50px;
+  position: absolute;
+  bottom: -12px;
+  left: -5px;
+}
+
 .libPreview, .storePreview {
   display: flex;
   flex-flow: wrap;
   align-items: flex-start;
   justify-content: space-between;
   max-width: 900px;
-}
-.libPreview .game-card, .storePreview .game-card {
-  grid-column: 1;
-  grid-row: 1;
 }
 .libPreview div, .storePreview div {
   flex-grow: 2;
@@ -87,10 +130,10 @@
   font-size: 0;
   right: -180px;
   top: 23px;
-  width: 16px;
-  height: 16px;
+  width: 64px;
+  height: 64px;
   padding: 0px;
-  margin: -8px;
+  margin: -32px;
 }
 .libPreview .favouriteIcon img {
   width: 16px;
@@ -120,107 +163,6 @@
   margin: 1rem 0;
 }
 
-html, body {
-  font-family: "Archivo", sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  color: #fff;
-  background-color: #000;
-}
-
-h1 {
-  font-size: 42px;
-  font-weight: 500;
-}
-
-h2 {
-  font-size: 28px;
-  font-weight: 300;
-  margin: 1rem 1rem 1rem 0;
-}
-
-h3 {
-  font-size: 21px;
-  margin: 0;
-  word-wrap: break-word;
-  hyphens: auto;
-}
-
-h4 {
-  font-size: 14px;
-  font-weight: 300;
-  width: auto;
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  text-shadow: 2px 2px 5px #000000;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: last baseline;
-}
-header a {
-  max-width: 250px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-main {
-  height: 100%;
-  display: flex;
-  flex-grow: 1;
-}
-
-footer {
-  text-align: center;
-  width: 100%;
-  margin-top: auto;
-  margin-bottom: 5rem;
-}
-footer a {
-  color: #fff;
-}
-
-.pageButton, .pageButtonSelected {
-  padding: 1px 0.5rem;
-}
-
-.pageButtonSelected {
-  color: #000000;
-  font-weight: 600;
-  background-color: #ffffff;
-  border-radius: 6px;
-}
-
-section {
-  margin: 1rem;
-  padding: 1rem;
-  /*background: $gameSlate;
-  border: 1px solid #ccc;
-  border-radius: 5px;*/
-}
-
-.frontpage {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-areas: "store fav" "lib lib";
-  grid-template-rows: auto 1fr;
-  grid-template-columns: auto 1fr;
-  /* justify-content: stretch;
-  align-content: stretch;
-  overflow: visible;*/
-}
-@media only screen and (min-width: 900px) {
-  .frontpage {
-    grid-template-areas: "store fav" "lib fav";
-  }
-}
-
 .gameview {
   display: flex;
   flex-flow: column;
@@ -235,8 +177,14 @@ section {
   padding: 5rem;
   margin: 1rem;
 }
+.gameview h2 {
+  font-size: 28px;
+  font-weight: 300;
+  margin: 1rem 1rem 1rem 0;
+}
 .gameview h3 {
   font-weight: 300;
+  font-size: 21px;
 }
 .gameview span {
   display: flex;
@@ -305,16 +253,99 @@ section {
   flex-flow: column;
 }
 
-.favouriteIcon {
-  width: 32px;
-  height: 32px;
-  margin: 1rem 3rem;
-  align-self: center;
-  cursor: pointer;
+html, body {
+  font-family: "Archivo", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: #fff;
+  background-color: #000;
 }
-.favouriteIcon img {
-  width: 32px;
-  height: 32px;
+
+h1 {
+  font-size: 42px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 21px;
+  margin: 0;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: 300;
+  width: auto;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 2px 2px 5px #000000;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: last baseline;
+}
+header a {
+  max-width: 250px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+}
+
+footer {
+  text-align: center;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 5rem;
+}
+footer a {
+  color: #fff;
+}
+
+.pageButton, .pageButtonSelected {
+  padding: 1px 0.5rem;
+}
+
+.pageButtonSelected {
+  color: #000000;
+  font-weight: 600;
+  background-color: #ffffff;
+  border-radius: 6px;
+}
+
+section {
+  margin: 1rem;
+  padding: 1rem;
+  /*background: $gameSlate;
+  border: 1px solid #ccc;
+  border-radius: 5px;*/
+}
+
+.frontpage {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-areas: "store fav" "lib lib";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;
+  /* justify-content: stretch;
+  align-content: stretch;
+  overflow: visible;*/
+}
+@media only screen and (min-width: 900px) {
+  .frontpage {
+    grid-template-areas: "store fav" "lib fav";
+  }
 }
 
 .pageview div {
@@ -327,10 +358,6 @@ section {
 .pageview div article {
   display: grid;
 }
-.pageview div article .game-card {
-  grid-column: 1;
-  grid-row: 1;
-}
 .pageview div article .favouriteIcon {
   grid-column: 1;
   grid-row: 1;
@@ -339,10 +366,10 @@ section {
   font-size: 0;
   right: -180px;
   top: 23px;
-  width: 16px;
-  height: 16px;
+  width: 64px;
+  height: 64px;
   padding: 0px;
-  margin: -8px;
+  margin: -32px;
 }
 .pageview div article .favouriteIcon img {
   width: 16px;
@@ -359,30 +386,6 @@ section {
 
 .sectionTitle {
   width: 80px;
-}
-
-.buyButton, .buyButton_card {
-  text-decoration: none;
-  color: #fff;
-  padding: 0.4rem;
-  height: 1rem;
-  align-self: center;
-  text-align: center;
-  border-radius: 5px;
-  font-weight: 400;
-  box-shadow: 0 0 3px rgba(200, 200, 200, 0.4);
-  background-color: rgba(10, 10, 10, 0.6);
-}
-
-.buyButton_card {
-  grid-column: 1;
-  grid-row: 1;
-  align-self: normal;
-  position: relative;
-  bottom: -150px;
-  left: 120px;
-  padding: 0.4rem 0;
-  width: 50px;
 }
 
 #container {

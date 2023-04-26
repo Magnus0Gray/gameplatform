@@ -1,0 +1,68 @@
+$buttonsize: 64px;
+
+.favouriteIcon {
+    width: $buttonsize;
+    height: $buttonsize;
+    margin: 1rem 3rem;
+    align-self: center;
+    cursor: pointer;
+
+    img {
+        width: $buttonsize;
+        height: $buttonsize;
+    }
+}
+
+@mixin favbutton_card() {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: first baseline;
+    position: relative;
+    font-size: 0;
+    right: -180px;
+    top: 23px;
+    width: $buttonsize;
+    height: $buttonsize;
+    padding: 0px;
+    margin: calc(-1 * calc( $buttonsize / 2));
+
+    img {
+        width: calc($buttonsize / 4);
+        height: calc($buttonsize / 4);
+    }
+}
+
+.buyButton, .buyButton_card {
+    @include label_linkstyle();
+    padding: 0.4rem;
+    height: 1rem;
+    align-self: center;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 400;
+    box-shadow: 0 0 3px rgba(200,200,200,0.4);
+    background-color: rgba(10,10,10,0.6);
+
+}
+
+.buyButton_card {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: normal;
+    position: relative;
+    bottom: -150px;
+    left: 120px;
+    padding: 0.4rem 0;
+    width: 50px;
+
+    &:after {
+        display: block;
+        content: '';
+        width: 60px;
+        height: 50px;
+        position: absolute;
+        bottom: -12px;
+        left: -5px;
+    }
+}
+

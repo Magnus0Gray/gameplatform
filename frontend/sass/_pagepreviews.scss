@@ -7,11 +7,6 @@
     justify-content: space-between;
     max-width: 900px;
 
-    .game-card {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
     div {
         flex-grow: 2;
         display: flex;
@@ -36,25 +31,10 @@
         }
     }
 
-
+    
     .favouriteIcon {
-        grid-column: 1;
-        grid-row: 1;
-        align-self: first baseline;
-        position: relative;
-        font-size: 0;
-        right: -180px;
-        top: 23px;
-        width: 16px;
-        height: 16px;
-        padding: 0px;
-        margin: -8px;
-
-
-        img {
-            width: 16px;
-            height: 16px;
-        }
+        //undeclared, but is available when implemented in main
+        @include favbutton_card();
     }
 }
 

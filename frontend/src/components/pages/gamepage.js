@@ -104,7 +104,7 @@ export default function Gamepage() {
 	}
 
 	function rotateScreenshot() {
-		if(screenshotRotation == 0)
+		if (screenshotRotation == 0)
 			return screenshotRotation = -2;
 		if (screenshotRotation == -2)
 			return screenshotRotation = 10;
@@ -115,7 +115,7 @@ export default function Gamepage() {
 	//gameRawg?.tags.map((t, i) => t.name + (i !== (gameRawg?.tags.length - 1), ", "))
 	//	< article style = {{ backgroundImage: gameRawg?.background_image != null ? `url(${gameRawg?.background_image})` : `url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg")` }} className = "gameview" >
 	return (
-		<article style={{ backgroundImage: getBackgroundIMG() }} alt="article with a background image" className="gameview">
+		<article style={{ backgroundImage: getBackgroundIMG() }} aria-label={"Article about " + gameRawg?.name + " with a background image"} className="gameview">
 			<div className="infoWrapper">
 				<span><h2>{gameRawg?.name}</h2>{gameRawg == undefined || isOwned ? null : <BuyButton game={gameRawg} />}{game ? <FavButton updateParent={getGame} favstate={game?.favourite} game={game} /> : null}</span>
 				
@@ -136,7 +136,7 @@ export default function Gamepage() {
 				
 			</div>
 			<div className="screenshotWrapper">
-				{screenshots?.results?.filter((r, i) => i < 3).reverse().map((s, i) => <img style={{ transform: `rotate(${rotateScreenshot()}deg)`}}className="screenshot" key={i} src={s.image} />)}
+				{screenshots?.results?.filter((r, i) => i < 3).reverse().map((s, i) => <img style={{ transform: `rotate(${rotateScreenshot()}deg)` }} alt={"Screenshot from " + gameRawg?.name} className="screenshot" key={i} src={s.image} />)}
 			</div>
 			<div className="descriptionWrapper">
 				<h3>Description:</h3>

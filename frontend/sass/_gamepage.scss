@@ -1,0 +1,89 @@
+
+.gameview {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    background: #252525;
+    border-radius: 150px;
+    background-image: url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg");
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 30px rgba(0,0,0,1) inset, 0 0 50px rgba(0,0,0,1) inset, 0 0 80px rgba(0,0,0,1) inset;
+    padding: 5rem;
+    margin: 1rem;
+
+    h2 {
+        font-size: $rootsize * 2;
+        font-weight: 300;
+        margin: 1rem 1rem 1rem 0;
+    }
+
+    h3 {
+        font-weight: 300;
+        font-size: $rootsize * 1.5;
+    }
+
+    span {
+        display: flex;
+    }
+
+    @media only screen and (min-width: $verticalThreshold) {
+        padding: 5rem;
+        margin: 5rem;
+        flex-flow: wrap;
+    }
+}
+
+.descriptionWrapper {
+    max-width: 800px;
+}
+
+.screenshotWrapper {
+    display: flex;
+    padding: 5rem 0;
+    margin: 0 -5rem;
+    flex: 1;
+    justify-content: center;
+
+    @media only screen and (min-width: $verticalThreshold) {
+        flex-flow: column-reverse;
+        margin-top: -5rem;
+        margin-bottom: -5rem;
+    }
+}
+
+.screenshot {
+    border: 1px solid;
+    background: #ffffff;
+    box-shadow: 2px 2px 8px #000, 2px 2px 8px #000, 2px 2px 8px #000;
+    border-radius: 4px;
+    padding: 5px;
+    width: 250px;
+    transform: rotate(10deg);
+    margin: 0 -3rem;
+
+    @media only screen and (min-width: $verticalThreshold) {
+        margin: 0;
+        margin-top: -0.5rem;
+        align-self: center;
+    }
+}
+
+.infoWrapper {
+    @media only screen and (min-width: $verticalThreshold) {
+        min-width: 230px;
+    }
+
+    flex: 1;
+}
+
+.gameinfo, .gameinfo_desc {
+    margin: 1rem;
+    text-shadow: $denseTextShadow;
+}
+
+.gameinfo_desc {
+    display: flex;
+    flex-flow: column;
+}

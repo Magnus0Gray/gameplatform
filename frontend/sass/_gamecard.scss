@@ -11,15 +11,17 @@
     //border-radius: 1rem;
     //box-shadow: 0 0 15px #000;
     //border: 1px solid #ccc;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5) inset;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8) inset;
     background-image: url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg");
     background-blend-mode: soft-light;
     background-size: cover;
     background-position: center;
     color: $fontColor;
     text-decoration: none;
+    grid-column: 1;
+    grid-row: 1;
 
-    h3 {
+    h2 {
         background-color: rgba(0,0,0,0.3);
         //blended style
         /*       
@@ -37,7 +39,7 @@
         text-shadow: $denseTextShadow;
     }
 
-    h4 {
+    h3 {
         margin: 0.5rem 1rem;
         //blended style
         /*border-bottom-left-radius: 10px;

@@ -20,10 +20,10 @@ export default function GameCard({ gameinfo, isInLibrary, updateParent }) {
 	//favbutton placed on bottom despite visually being placed on top, to facilitate better tab navigation order
 	return (
 		<article>
-			<Link className="game-card" style={{backgroundImage: `url(${gameRawg?.background_image})`}} alt="Background image of gamecard" to={'/games/' + gameinfo?.slug.current}>
-			<h3>{gameinfo?.game_title}</h3>
+			<Link className="game-card" style={{ backgroundImage: `url(${gameRawg?.background_image})` }} aria-label={"Article with a background image of " + gameRawg.name} to={'/games/' + gameinfo?.slug.current}>
+			<h2>{gameinfo?.game_title}</h2>
 
-			<h4>{gameinfo?.cat_title}</h4>
+			<h3>{gameinfo?.cat_title}</h3>
 
 			
 			</Link>

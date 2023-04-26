@@ -3,11 +3,24 @@
 @import "colours";
 @import "effects";
 @import "gamecard";
+
+@mixin label_linkstyle() {
+    text-decoration: none;
+    color: $fontColor;
+}
+
+//makes use of mixin declared above
+@import "buttons";
 @import "pagepreviews";
 
 $maxwidth: 1400px;
 $verticalThreshold: 1200px;
 $rootsize: 14px;
+
+//makes use of defaults above
+@import "gamepage";
+
+
 
 
 html, body {
@@ -26,27 +39,19 @@ h1{
 }
 
 h2 {
-    font-size: $rootsize * 2;
-    font-weight: 300;
-    margin: 1rem 1rem 1rem 0;
-}
-
-h3 {
     font-size: $rootsize * 1.5;
     margin: 0;
     word-wrap: break-word;
-
     hyphens: auto; //doesn't work in most browsers
 }
 
-h4 {
+h3 {
     font-size: $rootsize;
     font-weight: 300;
     width: auto;
     margin: 1rem;
     display: flex;
     flex-direction: column;
-
     text-shadow: 2px 2px 5px #000000;
 }
 
@@ -57,9 +62,8 @@ header {
 
     a {
         max-width: 250px;
-        text-decoration: none;
         text-transform: uppercase;
-        color: $fontColor;
+        @include label_linkstyle();
     }
 }
 main {
@@ -74,7 +78,6 @@ footer {
     margin-bottom: 5rem;
 
     a {
-        //text-decoration: none;
         color: $fontColor;
     }
 }
@@ -127,106 +130,6 @@ section {
     overflow: visible;*/
 }
 
-.gameview {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-evenly;
-
-    background: #252525;
-    border-radius: 150px;
-    background-image: url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg");
-    background-blend-mode: soft-light;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 0 30px rgba(0,0,0,1) inset, 0 0 50px rgba(0,0,0,1) inset, 0 0 80px rgba(0,0,0,1) inset;
-    padding: 5rem;
-    margin: 1rem;
-    
-
-    h3 {
-        font-weight: 300;
-    }
-
-    span {
-        display: flex;
-    }
-
-    @media only screen and (min-width: $verticalThreshold) {
-        padding: 5rem;
-        margin: 5rem;
-        flex-flow: wrap;
-    }
-}
-
-.descriptionWrapper {
-    max-width: 800px;
-    
-}
-
-.screenshotWrapper {
-    display: flex;
-    padding: 5rem 0;
-    margin: 0 -5rem;
-    flex: 1;
-    justify-content: center;
-
-    @media only screen and (min-width: $verticalThreshold) {
-        flex-flow: column-reverse;
-
-
-        margin-top: -5rem;
-        margin-bottom: -5rem;
-    }
-}
-
-.screenshot {
-    border: 1px solid;
-    background: #ffffff;
-    box-shadow: 2px 2px 8px #000, 2px 2px 8px #000, 2px 2px 8px #000;
-    border-radius: 4px;
-    padding: 5px;
-    width: 250px;
-    transform: rotate(10deg);
-    margin: 0 -3rem;
-
-    @media only screen and (min-width: $verticalThreshold) {
-        margin: 0;
-        margin-top: -0.5rem;
-        align-self: center;
-    }
-}
-
-.infoWrapper {
-    @media only screen and (min-width: $verticalThreshold) {
-        min-width: 230px;
-    }
-
-    flex: 1;
-}
-
-.gameinfo, .gameinfo_desc {
-    margin: 1rem;
-    text-shadow: $denseTextShadow;
-}
-
-.gameinfo_desc {
-    display: flex;
-    flex-flow: column;
-}
-
-.favouriteIcon {
-    width: 32px;
-    height: 32px;
-    margin: 1rem 3rem;
-    align-self: center;
-    cursor: pointer;
-
-    img {
-        width: 32px;
-        height: 32px;
-    }
-}
-
 .pageview {
 
 
@@ -240,28 +143,8 @@ section {
         article {
             display: grid;
 
-            .game-card {
-                grid-column: 1;
-                grid-row: 1;
-            }
-
             .favouriteIcon {
-                grid-column: 1;
-                grid-row: 1;
-                align-self: first baseline;
-                position: relative;
-                font-size: 0;
-                right: -180px;
-                top: 23px;
-                width: 16px;
-                height: 16px;
-                padding: 0px;
-                margin: -8px;
-
-                img {
-                    width: 16px;
-                    height: 16px;
-                }
+                @include favbutton_card();
             }
         }
     }
@@ -272,40 +155,13 @@ section {
     font-weight: 500;
     font-size: $rootsize * 2;
     margin: 1rem 1rem 1rem 0;
-    text-decoration: none;
-
-    color: $fontColor;
+    @include label_linkstyle();
 }
 
 .sectionTitle {
     width: 80px;
 
 }
-
-.buyButton, .buyButton_card {
-    text-decoration: none;
-    color: $fontColor;
-    padding: 0.4rem;
-    height: 1rem;
-    align-self: center;
-    text-align: center;
-    border-radius: 5px;
-    font-weight: 400;
-    box-shadow: 0 0 3px rgba(200,200,200,0.4);
-    background-color: rgba(10,10,10,0.6);
-
-}
-.buyButton_card {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: normal;
-    position: relative;
-    bottom: -150px;
-    left: 120px;
-    padding: 0.4rem 0;
-    width: 50px;
-}
-
 
 
 #container {
