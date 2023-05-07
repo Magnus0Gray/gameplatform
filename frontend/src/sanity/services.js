@@ -6,7 +6,7 @@ export const fetchAllCategories = async () => {
 	return data
 }
 
-export const fetchAllGames = async () => {
+export const fetchAllUserGames = async () => {
 	const data = await client.fetch(`*[_type == "games"]		
 		{_id, "apikey":API_ID, game_title, "cat_title":category->title, slug, favourite }`)
 	//console.log(data)
@@ -14,7 +14,7 @@ export const fetchAllGames = async () => {
 	return data
 }
 
-export const fetchGame = async (slug) => {
+export const fetchUserGame = async (slug) => {
 	//-> går inn i _ref
 	const data = await client.fetch(`*[_type == "games" && slug.current == $slug]
 		{_id, "apikey":API_ID, game_title, "cat_title":category->title, owned, favourite, hoursplayed }`,
@@ -23,9 +23,7 @@ export const fetchGame = async (slug) => {
 }
 
 export async function patchFavRemote(id, state) {
-	console.log(".....")
-	console.log(state)
-	console.log("^^^^")
 	const result = await writeClient.patch(id).set({ favourite: state }).commit().then(() => { return "Fav updated" }).catch((error) => { return error.message })
+	console.log(state)
 	return result;
 }

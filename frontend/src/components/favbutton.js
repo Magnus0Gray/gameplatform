@@ -1,22 +1,25 @@
 import { useState, useRef, useEffect } from "react";
 import { patchFavRemote } from "../sanity/services";
 
-export default function FavButton({ favstate, game, updateParent }) {
+export default function FavButton({ favstate, game, updateParent}) {
 
 	const [currentFavstate, setCurrentFavstate] = useState(favstate);
 	const didMount = useRef(true);
 	//console.log(favstate)
 	//console.log(currentFavstate)
+	//console.log(game)
 
 	function toggleFav() {
 		setCurrentFavstate(!currentFavstate)
 	}
 	const updateRemote = async () => {
-		console.log(game._id)
+		//console.log(game._id)
 
 		const result = await patchFavRemote(game._id, currentFavstate)
-		console.log(result)
-		updateParent(); //refaktorere slik at jeg alltid henter og oppdaterer objektet direkte i stedet for kopier, så manuelt oppdatere andre kopier?
+		//console.log(result)
+		//manuelt oppdaterer favstatus hos library/favourite/frontpage for å forsikre mot desync
+		if (updateParent)
+			updateParent(); //refaktorere slik at jeg alltid henter og oppdaterer objektet direkte i stedet for kopier, så manuelt oppdatere andre kopier?
 	}
 
 	useEffect(() => {

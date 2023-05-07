@@ -3,9 +3,9 @@ $buttonsize: 64px;
 .favouriteIcon {
     width: $buttonsize;
     height: $buttonsize;
-    margin: 1rem 3rem;
     align-self: center;
     cursor: pointer;
+    margin-left: 2rem;
 
     img {
         width: $buttonsize;

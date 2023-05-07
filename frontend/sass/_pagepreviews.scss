@@ -22,8 +22,10 @@
 
 .libPreview {
     grid-area: lib;
+    //justify-content: flex-start;
 
     div {
+        //justify-content: space-between;
         justify-content: center;
 
         @media only screen and (min-width: 900px) {
@@ -31,7 +33,6 @@
         }
     }
 
-    
     .favouriteIcon {
         //undeclared, but is available when implemented in main
         @include favbutton_card();
@@ -63,8 +64,9 @@
     }
 
     .sectionTitle {
-        width: auto;
         margin: 1rem 0;
+        align-self: center;
+
     }
 }
 

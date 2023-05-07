@@ -2,14 +2,15 @@
 
 @import "colours";
 @import "effects";
-@import "gamecard";
 
 @mixin label_linkstyle() {
     text-decoration: none;
     color: $fontColor;
 }
 
-//makes use of mixin declared above
+//makes use of mixin & imports declared above
+@import "countbadge";
+@import "gamecard";
 @import "buttons";
 @import "pagepreviews";
 
@@ -29,6 +30,7 @@ html, body {
     font-size: $rootsize;
     color: $fontColor;
     background-color: $backgroundColor;
+    min-width: fit-content;
     //max-height: 80%;
 }
 
@@ -67,7 +69,6 @@ header {
     }
 }
 main {
-    height: 100%;
     display: flex;
     flex-grow: 1;
 }
@@ -75,7 +76,7 @@ footer {
     text-align: center;
     width: 100%;
     margin-top: auto;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 
     a {
         color: $fontColor;
@@ -108,7 +109,6 @@ section {
 
 
 .frontpage {
-    height: 100%;
     width: 100%;
     display: grid;
     //justify-items: end;
@@ -156,19 +156,24 @@ section {
     font-size: $rootsize * 2;
     margin: 1rem 1rem 1rem 0;
     @include label_linkstyle();
+
 }
 
 .sectionTitle {
+    display: flex;
+    justify-content: flex-end;
     width: 80px;
-
+    z-index: 2;
+    position: relative;
 }
 
 
 #container {
+    min-height: 98vh;
     display: flex;
     flex-flow: column;
     max-width: $maxwidth;
+    min-width: fit-content;
     margin: 0 auto;
     padding: 0 5rem;
-    min-height: 100vh;
 }

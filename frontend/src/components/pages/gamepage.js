@@ -1,4 +1,4 @@
-import { fetchGame } from '../../sanity/services';
+import { fetchUserGame } from '../../sanity/services';
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import FavButton from '../favbutton';
@@ -12,63 +12,63 @@ export default function Gamepage() {
 
 	const didMount = useRef(true);
 
+	const [userGame, setUserGame] = useState(null)
 	const [game, setGame] = useState(null)
-	const [gameRawg, setGameRawg] = useState(null)
 	const [screenshots, setScreenshots] = useState([])
 	const [isOwned, setIsOwned] = useState(false)
 
-	const getGame = async () => {
-		const data = await fetchGame(params.slug)
+	const getUserGame = async () => {
+		const data = await fetchUserGame(params.slug)
 		console.log(data[0])
 		//console.log(params.slug)
 		if (data[0] != undefined) {
-			setGame(data[0])
+			setUserGame(data[0])
 			setIsOwned(true)
 		}
 		else
-			getGameRawg()
+			getGame()
 
 
 	}
 
-	const getGameRawg = async () => {
-		var rawgResponse;
+	const getGame = async () => {
+		var response;
 		if (!isOwned)
-			rawgResponse = await fetch(`https://api.rawg.io/api/games/${params.slug}?key=c83b6040e57a43e1817e831ba00f9cd1`)
+			response = await fetch(`https://api.rawg.io/api/games/${params.slug}?key=c83b6040e57a43e1817e831ba00f9cd1`)
 		else
-			rawgResponse = await fetch(`https://api.rawg.io/api/games/${game.apikey}?key=c83b6040e57a43e1817e831ba00f9cd1`)
-		const rawgData = await rawgResponse.json()
-		setGameRawg(rawgData, getScreenshots(rawgData));
+			response = await fetch(`https://api.rawg.io/api/games/${userGame.apikey}?key=c83b6040e57a43e1817e831ba00f9cd1`)
+		const data = await response.json()
+		setGame(data, getScreenshots(data));
 
 	}
 
-	const getScreenshots = async (data) => {
-		const ssResponse = await fetch(`https://api.rawg.io/api/games/${data.id}/screenshots?key=c83b6040e57a43e1817e831ba00f9cd1`)
-		const ssData = await ssResponse.json()
-		setScreenshots(ssData);
-		console.log(ssData);
+	const getScreenshots = async (inData) => {
+		const response = await fetch(`https://api.rawg.io/api/games/${inData.id}/screenshots?key=c83b6040e57a43e1817e831ba00f9cd1`)
+		const data = await response.json()
+		setScreenshots(data);
+		console.log(data);
 	}
 
 
-	//console.log(game?.favourite);
+	//console.log(userGame?.favourite);
 
 	useEffect(() => {
 
 		if (didMount.current) {
-			getGame()
+			getUserGame()
 			didMount.current = false
 			return
 		}
 
-		getGameRawg()
+		getGame()
 
 	}, [isOwned])
 
 	function getBackgroundIMG() {
-		if (gameRawg?.background_image_additional != null)
-			return `url(${gameRawg?.background_image_additional})`
-		else if (gameRawg?.background_image != null)
-			return `url(${gameRawg?.background_image})`
+		if (game?.background_image_additional != null)
+			return `url(${game?.background_image_additional})`
+		else if (game?.background_image != null)
+			return `url(${game?.background_image})`
 		else
 			return `url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg")`
 
@@ -112,35 +112,35 @@ export default function Gamepage() {
 			return screenshotRotation = -10;
 	}
 
-	//gameRawg?.tags.map((t, i) => t.name + (i !== (gameRawg?.tags.length - 1), ", "))
-	//	< article style = {{ backgroundImage: gameRawg?.background_image != null ? `url(${gameRawg?.background_image})` : `url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg")` }} className = "gameview" >
+	//game?.tags.map((t, i) => t.name + (i !== (game?.tags.length - 1), ", "))
+	//	< article style = {{ backgroundImage: game?.background_image != null ? `url(${game?.background_image})` : `url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg")` }} className = "gameview" >
 	return (
-		<article style={{ backgroundImage: getBackgroundIMG() }} aria-label={"Article about " + gameRawg?.name + " with a background image"} className="gameview">
+		<article style={{ backgroundImage: getBackgroundIMG() }} aria-label={"Article about " + game?.name + " with a background image"} className="gameview">
 			<div className="infoWrapper">
-				<span><h2>{gameRawg?.name}</h2>{gameRawg == undefined || isOwned ? null : <BuyButton game={gameRawg} />}{game ? <FavButton updateParent={getGame} favstate={game?.favourite} game={game} /> : null}</span>
+				<span><h2>{game?.name}</h2>{game == undefined || isOwned ? null : <BuyButton game={game} />}{userGame ? <FavButton favstate={userGame?.favourite} game={userGame} /> : null}</span>
 				
-				{game ? <span className="gameinfo">Hours Played: {game?.hoursplayed}</span> : null}
-				{game
-					? <span className="gameinfo">Genre: {game?.cat_title}</span>
-					: gameRawg?.genres.map((g, i) => <span className="gameinfo" key={i}>{g.name}</span>)}
-				<span className="gameinfo"> Metacritic Score: {gameRawg?.metacritic}</span>
-				<span className="gameinfo"> Release Date: {gameRawg?.released}</span>
-				{gameRawg == undefined ? null
+				{userGame ? <span className="gameinfo">Hours Played: {userGame?.hoursplayed}</span> : null}
+				{userGame
+					? <span className="gameinfo">Genre: {userGame?.cat_title}</span>
+					: game?.genres.map((g, i) => <span className="gameinfo" key={i}>{g.name}</span>)}
+				<span className="gameinfo"> Metacritic Score: {game?.metacritic}</span>
+				<span className="gameinfo"> Release Date: {game?.released}</span>
+				{game == undefined ? null
 					:<>
-						<span className="gameinfo"> Developers: {makeList(gameRawg?.developers)}</span>
-						<span className="gameinfo"> Publishers: {makeList(gameRawg?.publishers)}</span>
-						<span className="gameinfo"> Platforms: {makeList(gameRawg?.platforms, true)}</span>
-						<span className="gameinfo"> Available through: {makeList(gameRawg?.stores, false, true)}</span>
-						<span className="gameinfo">Tags: {makeList(gameRawg?.tags)} </span>
+						<span className="gameinfo"> Developers: {makeList(game?.developers)}</span>
+						<span className="gameinfo"> Publishers: {makeList(game?.publishers)}</span>
+						<span className="gameinfo"> Platforms: {makeList(game?.platforms, true)}</span>
+						<span className="gameinfo"> Available through: {makeList(game?.stores, false, true)}</span>
+						<span className="gameinfo">Tags: {makeList(game?.tags)} </span>
 					</>}
 				
 			</div>
 			<div className="screenshotWrapper">
-				{screenshots?.results?.filter((r, i) => i < 3).reverse().map((s, i) => <img style={{ transform: `rotate(${rotateScreenshot()}deg)` }} alt={"Screenshot from " + gameRawg?.name} className="screenshot" key={i} src={s.image} />)}
+				{screenshots?.results?.filter((r, i) => i < 3).reverse().map((s, i) => <img style={{ transform: `rotate(${rotateScreenshot()}deg)` }} alt={"Screenshot from " + game?.name} className="screenshot" key={i} src={s.image} />)}
 			</div>
 			<div className="descriptionWrapper">
 				<h3>Description:</h3>
-				<span className="gameinfo_desc" dangerouslySetInnerHTML={{ __html: gameRawg?.description }} />
+				<span className="gameinfo_desc" dangerouslySetInnerHTML={{ __html: game?.description }} />
 			</div>
 
 		</article>

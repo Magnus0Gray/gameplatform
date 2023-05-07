@@ -1,18 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,400;1,600&display=swap");
+.countBadge {
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background-color: #383838;
+  color: #BBB;
+  position: absolute;
+  top: -5px;
+  right: -15px;
+  z-index: -1;
+}
+
 .game-card {
-  padding: 1rem;
   margin: 0.5rem;
+  padding: 1rem;
   width: 160px;
   height: 160px;
-  background: #444;
+  background: #383838;
   border-radius: 5px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8) inset;
   background-image: url("https://media.rawg.io/media/screenshots/38e/38efd8e2f8335db8f949b4092684cdfa.jpg");
   background-blend-mode: soft-light;
   background-size: cover;
   background-position: center;
-  color: #fff;
   text-decoration: none;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8) inset;
   grid-column: 1;
   grid-row: 1;
 }
@@ -29,6 +48,9 @@
   padding: 0.5rem;
   font-weight: 500;
   width: fit-content;
+  box-sizing: border-box;
+  margin: 0;
+  height: fit-content;
   text-shadow: 0 0 8px #000, 0 0 8px #000, 0 0 8px #000, 0 0 8px #000;
 }
 .game-card h3 {
@@ -52,9 +74,9 @@
 .favouriteIcon {
   width: 64px;
   height: 64px;
-  margin: 1rem 3rem;
   align-self: center;
   cursor: pointer;
+  margin-left: 2rem;
 }
 .favouriteIcon img {
   width: 64px;
@@ -159,8 +181,8 @@
   display: grid;
 }
 .favPreview .sectionTitle {
-  width: auto;
   margin: 1rem 0;
+  align-self: center;
 }
 
 .gameview {
@@ -259,6 +281,7 @@ html, body {
   font-size: 14px;
   color: #fff;
   background-color: #000;
+  min-width: fit-content;
 }
 
 h1 {
@@ -296,7 +319,6 @@ header a {
 }
 
 main {
-  height: 100%;
   display: flex;
   flex-grow: 1;
 }
@@ -305,7 +327,7 @@ footer {
   text-align: center;
   width: 100%;
   margin-top: auto;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 footer a {
   color: #fff;
@@ -331,7 +353,6 @@ section {
 }
 
 .frontpage {
-  height: 100%;
   width: 100%;
   display: grid;
   grid-gap: 0.5rem;
@@ -385,16 +406,21 @@ section {
 }
 
 .sectionTitle {
+  display: flex;
+  justify-content: flex-end;
   width: 80px;
+  z-index: 2;
+  position: relative;
 }
 
 #container {
+  min-height: 98vh;
   display: flex;
   flex-flow: column;
   max-width: 1400px;
+  min-width: fit-content;
   margin: 0 auto;
   padding: 0 5rem;
-  min-height: 100vh;
 }
 
 /*# sourceMappingURL=main.css.map */
