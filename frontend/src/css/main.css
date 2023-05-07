@@ -198,6 +198,7 @@
   box-shadow: 0 0 30px rgb(0, 0, 0) inset, 0 0 50px rgb(0, 0, 0) inset, 0 0 80px rgb(0, 0, 0) inset;
   padding: 5rem;
   margin: 1rem;
+  max-width: 1000px;
 }
 .gameview h2 {
   font-size: 28px;
@@ -226,15 +227,14 @@
 .screenshotWrapper {
   display: flex;
   padding: 5rem 0;
-  margin: 0 -5rem;
+  margin: -3rem -5rem;
   flex: 1;
   justify-content: center;
 }
 @media only screen and (min-width: 1200px) {
   .screenshotWrapper {
     flex-flow: column-reverse;
-    margin-top: -5rem;
-    margin-bottom: -5rem;
+    margin: -5rem 5rem;
   }
 }
 
@@ -257,6 +257,7 @@
 }
 
 .infoWrapper {
+  padding: 0 5rem;
   flex: 1;
 }
 @media only screen and (min-width: 1200px) {
@@ -267,12 +268,15 @@
 
 .gameinfo, .gameinfo_desc {
   margin: 1rem;
+  min-width: 350px;
   text-shadow: 0 0 8px #000, 0 0 8px #000, 0 0 8px #000, 0 0 8px #000;
 }
 
 .gameinfo_desc {
   display: flex;
   flex-flow: column;
+  width: 100%;
+  max-width: 650px;
 }
 
 html, body {
